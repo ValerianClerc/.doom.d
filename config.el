@@ -58,13 +58,13 @@
 (setq
  projectile-project-search-path '("~/coding")
  haskell-stylish-on-save t
- mac-command-modifier 'meta
+ ;;mac-command-modifier 'meta
  dired-dwim-target t
  )
 
-(map! :ne "M-/" #'comment-or-uncomment-region)
+(map! :ne "s-/" #'comment-or-uncomment-region)
 
 (after! org
   (map! :map org-mode-map
-        :n "M-j" #'org-metadown
-        :n "M-k" #'org-metaup))
+        :n "s-j" #'org-metadown
+        :n "s-k" #'org-metaup))
