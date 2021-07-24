@@ -47,7 +47,7 @@
        ;;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
-       ;;window-select     ; visually switch windows
+       (window-select +numbers)     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
        ;;zen               ; distraction-free coding or writing
 
@@ -118,7 +118,7 @@
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
-       ;;data              ; config/data formats
+       data              ; config/data formats
        ;;(dart +flutter)   ; paint ui and not much else
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
@@ -136,7 +136,7 @@
        ;;idris             ; a language you can depend on
        json              ; At least it ain't XML
        ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
-       ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
+       (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        ;;latex             ; writing papers in Emacs has never been so fun
@@ -166,7 +166,7 @@
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       ;;web               ; the tubes
+       web               ; the tubes
        yaml              ; JSON, but readable
        ;;zig               ; C, but simpler
 
