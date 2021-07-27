@@ -60,6 +60,7 @@
  haskell-stylish-on-save t
  ;;mac-command-modifier 'meta
  dired-dwim-target t
+ org-cycle-emulate-tab nil
  )
 
 (map! :ne "s-/" #'comment-or-uncomment-region)
@@ -68,3 +69,5 @@
   (map! :map org-mode-map
         :n "s-j" #'org-metadown
         :n "s-k" #'org-metaup))
+
+(add-to-list '+format-on-save-enabled-modes 'js2-mode t)
