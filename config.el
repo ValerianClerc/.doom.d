@@ -68,6 +68,15 @@
 (after! org
   (map! :map org-mode-map
         :n "s-j" #'org-metadown
-        :n "s-k" #'org-metaup))
+        :n "s-k" #'org-metaup)
+  (setq
+   org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(i)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)"))
+   org-todo-keyword-faces
+   '(("WAITING" :foreground "#9f7efe" :weight normal :underline t)
+     ("INPROGRESS" :foreground "#0098dd" :weight normal :underline t)
+     ("DONE" :foreground "#50a14f" :weight normal :underline t)
+     ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)
+     ))
+  )
 
 (add-to-list '+format-on-save-enabled-modes 'js2-mode t)
