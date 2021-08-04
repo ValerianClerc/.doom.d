@@ -79,4 +79,10 @@
      ))
   )
 
-(add-to-list '+format-on-save-enabled-modes 'js2-mode t)
+;; hook to prevent formatting with LSP in cases where theres a specific formatter requested (i.e. prettier)
+;; This is to prevent 2 formatters trying to modify the same file
+(add-hook! 'typescript-mode-hook
+   (if (locate-dominating-file default-directory ".prettierrc.js")
+       (setq +format-with-lsp nil)
+       (setq +format-with-lsp t))
+   )
