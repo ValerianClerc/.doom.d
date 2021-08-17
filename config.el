@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Valerian Clerc"
-      user-mail-address "valerian.clerc@gmail.com")
+      user-mail-address "vclerc@microsoft.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -56,14 +56,12 @@
 
 ;; The following configuration variables were added by me (Valerian)
 (setq
- projectile-project-search-path '("~/coding")
- haskell-stylish-on-save t
- ;;mac-command-modifier 'meta
+ projectile-project-search-path '("~/code")
  dired-dwim-target t
  org-cycle-emulate-tab nil
  )
 
-(map! :ne "s-/" #'comment-or-uncomment-region)
+(map! :ne "C-/" #'comment-or-uncomment-region)
 
 (after! org
   (map! :map org-mode-map
