@@ -63,7 +63,11 @@
 
 (map! :ne "C-/" #'comment-or-uncomment-region)
 
+(defun make-akams-link (aka-path)
+  (browse-url (concat "https://aka.ms/" aka-path)))
+
 (after! org
+  (org-add-link-type "akams" #'make-akams-link)
   (map! :map org-mode-map
         :n "s-j" #'org-metadown
         :n "s-k" #'org-metaup)
