@@ -35,7 +35,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -63,7 +63,10 @@
  org-cycle-emulate-tab nil
  )
 
+(set-file-template! "\\.cs$" ':trigger "__.cs" :mode 'csharp-mode)
+
 (map! :ne "C-/" #'comment-or-uncomment-region)
+(map! :ne "SPC 1" #'evil-switch-to-windows-last-buffer)
 
 (defun make-akams-link (aka-path)
   (browse-url (concat "https://aka.ms/" aka-path)))
