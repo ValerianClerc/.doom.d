@@ -19,10 +19,10 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
- (setq doom-font (font-spec :family "Fira Code" :size 18)
-       doom-variable-pitch-font (font-spec :family "sans" :size 18)
-        doom-big-font (font-spec :family "Fira Code" :size 30)
-       )
+(setq doom-font (font-spec :family "Fira Code" :size 18)
+      doom-variable-pitch-font (font-spec :family "sans" :size 18)
+      doom-big-font (font-spec :family "Fira Code" :size 30)
+      )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -65,8 +65,10 @@
 
 (set-file-template! "\\.cs$" ':trigger "__.cs" :mode 'csharp-mode)
 
-(map! :ne "C-/" #'comment-or-uncomment-region)
-(map! :ne "SPC 1" #'evil-switch-to-windows-last-buffer)
+(after! evil
+  (map! :nvie "C-/" #'evilnc-comment-or-uncomment-lines)
+  (map! :ne "SPC 1" #'evil-switch-to-windows-last-buffer)
+  )
 
 (defun make-akams-link (aka-path)
   (browse-url (concat "https://aka.ms/" aka-path)))
@@ -89,7 +91,7 @@
 ;; hook to prevent formatting with LSP in cases where theres a specific formatter requested (i.e. prettier)
 ;; This is to prevent 2 formatters trying to modify the same file
 (add-hook! 'typescript-mode-hook
-   (if (locate-dominating-file default-directory ".prettierrc.js")
-       (setq +format-with-lsp nil)
-       (setq +format-with-lsp t))
-   )
+  (if (locate-dominating-file default-directory ".prettierrc.js")
+      (setq +format-with-lsp nil)
+    (setq +format-with-lsp t))
+  )
