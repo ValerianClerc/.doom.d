@@ -33,7 +33,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -63,7 +63,9 @@
  org-cycle-emulate-tab nil
  )
 
-(map! :ne "s-/" #'comment-or-uncomment-region)
+(after! evil
+  (map! :nvie "s-/" #'evilnc-comment-or-uncomment-lines)
+  )
 
 (after! org
   (map! :map org-mode-map
@@ -82,7 +84,7 @@
 ;; hook to prevent formatting with LSP in cases where theres a specific formatter requested (i.e. prettier)
 ;; This is to prevent 2 formatters trying to modify the same file
 (add-hook! 'typescript-mode-hook
-   (if (locate-dominating-file default-directory ".prettierrc.js")
-       (setq +format-with-lsp nil)
-       (setq +format-with-lsp t))
-   )
+  (if (locate-dominating-file default-directory ".prettierrc.js")
+      (setq +format-with-lsp nil)
+    (setq +format-with-lsp t))
+  )
