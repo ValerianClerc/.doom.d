@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: wrln
+# key: wrln
+# --
+Console.WriteLine($1);
