@@ -63,6 +63,11 @@
  org-cycle-emulate-tab nil
  )
 
+(after! haskell-interactive-mode
+  (map! :nvie "C-j" #'haskell-interactive-mode-history-next)
+  (map! :nvie "C-k" #'haskell-interactive-mode-history-previous)
+  )
+
 (after! evil
   (map! :nvie "s-/" #'evilnc-comment-or-uncomment-lines)
   )
