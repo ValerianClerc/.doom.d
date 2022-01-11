@@ -61,7 +61,11 @@
  projectile-project-search-path '("~/code")
  dired-dwim-target t
  org-cycle-emulate-tab nil
+ pomidor-sound-tick nil
+ pomidor-sound-tack nil
  )
+
+(map! :n "SPC =" #'pomidor)
 
 (set-file-template! "\\.cs$" ':trigger "__.cs" :mode 'csharp-mode)
 
@@ -85,8 +89,19 @@
      ("INPROGRESS" :foreground "#0098dd" :weight normal :underline t)
      ("DONE" :foreground "#50a14f" :weight normal :underline t)
      ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)
-     ))
-  )
+     )
+  org-capture-templates
+        '(("t" "Todo" entry (file+headline +org-capture-todo-file "Tasks")
+        "* TODO %?\n  %i\n  %a")
+          ("n" "Personal notes" entry
+           (file+headline +org-capture-notes-file "Inbox")
+           "* %u %?\n%i\n%a" :prepend t)
+          ("j" "Journal" entry
+           (file+olp+datetree +org-capture-journal-file)
+           "* %U %?\n%i" :prepend t))
+
+   )
+)
 
 ;; hook to prevent formatting with LSP in cases where theres a specific formatter requested (i.e. prettier)
 ;; This is to prevent 2 formatters trying to modify the same file

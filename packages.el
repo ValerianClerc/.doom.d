@@ -50,3 +50,4 @@
 ;(unpin! t)
 
 (package! powershell)
+(package! pomidor)
