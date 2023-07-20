@@ -78,7 +78,7 @@
   (browse-url (concat "https://aka.ms/" aka-path)))
 
 (after! org
-  (org-add-link-type "akams" #'make-akams-link)
+  (org-link-set-parameters "akams" #'make-akams-link)
   (map! :map org-mode-map
         :n "s-j" #'org-metadown
         :n "s-k" #'org-metaup)
@@ -110,3 +110,12 @@
       (setq +format-with-lsp nil)
     (setq +format-with-lsp t))
   )
+
+(when (and (eq system-type 'gnu/linux)
+           (string-match
+            "Linux.*Microsoft.*Linux"
+            (shell-command-to-string "uname -a")))
+  (setq
+   browse-url-generic-program  "/mnt/c/Windows/System32/cmd.exe"
+   browse-url-generic-args     '("/c" "start")
+   browse-url-browser-function #'browse-url-generic))
